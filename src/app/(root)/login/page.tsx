@@ -9,7 +9,11 @@ import { useRouter } from "next/navigation";
 const Login = () => {
      const [form] = useForm();
      const handleFinish = (values: any) => {
-          console.log(values);
+          // console.log(values);
+          const { email, password } = values;
+          localStorage.setItem("user", JSON.stringify({ email }));
+          router.push("/");
+          // window.location.reload();
      };
      const router = useRouter();
      return (
@@ -32,16 +36,30 @@ const Login = () => {
                               </NavigationLink> */}
                          </Box>
                          <Form form={form} onFinish={handleFinish}>
-                              <Form.Item name={"email"}>
+                              <Form.Item
+                                   name={"email"}
+                                   rules={[
+                                        {
+                                             required: true,
+                                             message: "Iltimos email kiriting!",
+                                        },
+                                   ]}>
                                    <Input placeholder="Email" />
                               </Form.Item>
-                              <Form.Item name={"password"}>
+                              <Form.Item
+                                   name={"password"}
+                                   rules={[
+                                        {
+                                             required: true,
+                                             message: "Iltimos password kiriting!",
+                                        },
+                                   ]}>
                                    <Input.Password placeholder="password" />
                               </Form.Item>
                               <Flex
                                    justify="space-between"
                                    style={{ marginBottom: "10px" }}>
-                                   <p>Dont have an account? </p>
+                                   <p>Don't have an account? </p>
                                    <p
                                         style={{ cursor: "pointer" }}
                                         onClick={() =>
@@ -52,7 +70,6 @@ const Login = () => {
                               </Flex>
 
                               <Button
-                                   onClick={() => router.push("/")}
                                    htmlType="submit"
                                    block
                                    size="large"

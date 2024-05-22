@@ -1,21 +1,44 @@
 import { Box, Container } from "@/components";
 import { StyledHeader } from "./style";
-import { useState } from "react";
-import { Button, Drawer } from "antd";
+import { useState, useEffect } from "react";
+import { Button, Drawer, Dropdown, MenuProps, Space } from "antd";
 import styled from "styled-components";
 import { media } from "@/style";
 import { useRouter } from "next/navigation";
 import { HiOutlineBars3CenterLeft } from "react-icons/hi2";
+import { DownOutlined } from "@ant-design/icons";
 
 export const Header = () => {
+     const [user, setUser] = useState(null);
      const [open, setOpen] = useState(false);
+     const router = useRouter();
+
+     useEffect(() => {
+          const storedUser = localStorage.getItem("user");
+          if (storedUser) {
+               setUser(JSON.parse(storedUser));
+          }
+     }, []);
+
      const showDrawer = () => {
           setOpen(true);
      };
+
      const onClose = () => {
           setOpen(false);
      };
-     const router = useRouter();
+
+     const handleLogout = () => {
+          localStorage.removeItem("user");
+          window.location.reload();
+     };
+
+     const items: MenuProps["items"] = [
+          {
+               key: "1",
+               label: <a onClick={handleLogout}>Tizimdan chiqish</a>,
+          },
+     ];
 
      return (
           <>
@@ -33,14 +56,29 @@ export const Header = () => {
                          <div>Logo</div>
 
                          <MenuItems style={{ display: "flex", gap: "50px" }}>
-                              <p>Home</p>
-                              <p>About us</p>
+                              <p
+                                   style={{ cursor: "pointer" }}
+                                   onClick={() => router.push("/")}>
+                                   Asosiy
+                              </p>
+                              <p style={{ cursor: "pointer" }}>Biz haqimizda</p>
                          </MenuItems>
-                         <div
-                              style={{ cursor: "pointer" }}
-                              onClick={() => router.push("/login")}>
-                              Login
-                         </div>
+                         {user ? (
+                              <Dropdown menu={{ items }}>
+                                   <a>
+                                        <Space>
+                                             Buyurtmalarim
+                                             <DownOutlined />
+                                        </Space>
+                                   </a>
+                              </Dropdown>
+                         ) : (
+                              <div
+                                   style={{ cursor: "pointer" }}
+                                   onClick={() => router.push("/login")}>
+                                   Login
+                              </div>
+                         )}
                     </Box>
                </StyledHeader>
                <Drawer
@@ -60,12 +98,12 @@ const StyledHam = styled.div`
      display: none !important;
 
      ${media.xs`
-     display:block !important;
-     `}
+    display:block !important;
+    `}
 `;
 
 const MenuItems = styled.div`
      ${media.xs`
-      display:none !important;
-     `}
+    display:none !important;
+    `}
 `;

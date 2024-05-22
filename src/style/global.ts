@@ -41,5 +41,6 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: normal;
     vertical-align: baseline;
     background: transparent;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 `;

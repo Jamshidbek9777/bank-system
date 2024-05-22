@@ -30,45 +30,74 @@ const banks = [
           name: "Anor Bank",
           pic: "/anor1.png",
      },
+     {
+          id: 1,
+          name: "Anor Bank",
+          pic: "/anor1.png",
+     },
+     {
+          id: 1,
+          name: "Anor Bank",
+          pic: "/anor1.png",
+     },
+     {
+          id: 1,
+          name: "Anor Bank",
+          pic: "/anor1.png",
+     },
+     {
+          id: 1,
+          name: "Anor Bank",
+          pic: "/anor1.png",
+     },
 ];
 export default function Home() {
+     const user = localStorage.getItem("user");
      const router = useRouter();
      return (
           <>
-               <Container style={{ marginTop: "200px" }}>
-                    <h1 style={{ fontSize: "30px", marginBottom: "20px" }}>
-                         Navbat olishingiz mumkin bolgan Banklar royxati
-                    </h1>
-                    <Row gutter={[24, 24]}>
-                         {banks.map((item, idx) => (
-                              <Col key={idx} xs={24} sm={12} lg={8}>
-                                   <Card
-                                        onClick={() => router.push("/branches")}
-                                        style={{
-                                             boxShadow:
-                                                  "2px 2px 5px 1px rgba(0, 0, 0, 0.2)",
-                                             cursor: "pointer",
-                                        }}
-                                        bordered
-                                        cover={
-                                             <img
-                                                  src={item.pic}
-                                                  style={{ height: "220px" }}
-                                             />
-                                        }>
-                                        <h1
+               {user ? (
+                    <Container style={{ marginTop: "200px" }}>
+                         <h1 style={{ fontSize: "30px", marginBottom: "20px" }}>
+                              Navbat olishingiz mumkin bolgan Banklar royxati
+                         </h1>
+                         <Row gutter={[24, 24]}>
+                              {banks.map((item, idx) => (
+                                   <Col key={idx} xs={24} sm={12} lg={8}>
+                                        <Card
+                                             onClick={() =>
+                                                  router.push("/branches")
+                                             }
                                              style={{
-                                                  fontSize: "20px",
+                                                  boxShadow:
+                                                       "2px 2px 5px 1px rgba(0, 0, 0, 0.2)",
                                                   cursor: "pointer",
                                              }}
-                                             key={idx}>
-                                             {item.name}
-                                        </h1>
-                                   </Card>
-                              </Col>
-                         ))}
-                    </Row>
-               </Container>
+                                             bordered
+                                             cover={
+                                                  <img
+                                                       src={item.pic}
+                                                       style={{
+                                                            height: "220px",
+                                                       }}
+                                                  />
+                                             }>
+                                             <h1
+                                                  style={{
+                                                       fontSize: "20px",
+                                                       cursor: "pointer",
+                                                  }}
+                                                  key={idx}>
+                                                  {item.name}
+                                             </h1>
+                                        </Card>
+                                   </Col>
+                              ))}
+                         </Row>
+                    </Container>
+               ) : (
+                    router.push("/login")
+               )}
           </>
      );
 }
