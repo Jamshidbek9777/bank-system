@@ -57,7 +57,10 @@ export default function Home() {
                                              />
                                         }>
                                         <h1
-                                             style={{ fontSize: "20px" }}
+                                             style={{
+                                                  fontSize: "20px",
+                                                  cursor: "pointer",
+                                             }}
                                              key={idx}>
                                              {item.name}
                                         </h1>
