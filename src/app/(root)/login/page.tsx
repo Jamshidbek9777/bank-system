@@ -41,7 +41,7 @@ const Login = () => {
                               <Flex
                                    justify="space-between"
                                    style={{ marginBottom: "10px" }}>
-                                   <p>Don't have an account? </p>
+                                   <p>Dont have an account? </p>
                                    <p
                                         style={{ cursor: "pointer" }}
                                         onClick={() =>

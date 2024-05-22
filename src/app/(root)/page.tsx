@@ -37,7 +37,7 @@ export default function Home() {
           <>
                <Container style={{ marginTop: "200px" }}>
                     <h1 style={{ fontSize: "30px", marginBottom: "20px" }}>
-                         Navbat olishingiz mumkin bo'lgan Banklar ro'yxati
+                         Navbat olishingiz mumkin bolgan Banklar royxati
                     </h1>
                     <Row gutter={[24, 24]}>
                          {banks.map((item, idx) => (
