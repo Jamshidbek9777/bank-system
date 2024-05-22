@@ -34,7 +34,7 @@ export const Header = () => {
 
                          <MenuItems style={{ display: "flex", gap: "50px" }}>
                               <p>Home</p>
-                              <p>Home</p>
+                              <p>About us</p>
                          </MenuItems>
                          <div
                               style={{ cursor: "pointer" }}
