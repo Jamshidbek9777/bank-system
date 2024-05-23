@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Container } from "@/components";
 import { Card, Col, Row } from "antd";
 import { useRouter } from "next/navigation";
@@ -11,49 +12,60 @@ const banks = [
           pic: "/download.png",
      },
      {
-          id: 1,
+          id: 2,
           name: "Hamkorbank",
           pic: "/hk.png",
      },
      {
-          id: 1,
+          id: 3,
           name: "MK bank",
           pic: "/mk.png",
      },
      {
-          id: 1,
+          id: 4,
           name: "Kapital Bank",
           pic: "/ktbank.png",
      },
      {
-          id: 1,
+          id: 5,
           name: "Anor Bank",
           pic: "/anor1.png",
      },
      {
-          id: 1,
+          id: 6,
           name: "Anor Bank",
           pic: "/anor1.png",
      },
      {
-          id: 1,
+          id: 7,
           name: "Anor Bank",
           pic: "/anor1.png",
      },
      {
-          id: 1,
+          id: 8,
           name: "Anor Bank",
           pic: "/anor1.png",
      },
      {
-          id: 1,
+          id: 9,
           name: "Anor Bank",
           pic: "/anor1.png",
      },
 ];
+
 export default function Home() {
-     const user = localStorage.getItem("user");
+     const [user, setUser] = useState(null);
      const router = useRouter();
+
+     useEffect(() => {
+          if (typeof window !== "undefined") {
+               const storedUser = localStorage.getItem("user");
+               if (storedUser) {
+                    setUser(JSON.parse(storedUser));
+               }
+          }
+     }, []);
+
      return (
           <>
                {user ? (
@@ -62,8 +74,8 @@ export default function Home() {
                               Navbat olishingiz mumkin bolgan Banklar royxati
                          </h1>
                          <Row gutter={[24, 24]}>
-                              {banks.map((item, idx) => (
-                                   <Col key={idx} xs={24} sm={12} lg={8}>
+                              {banks.map((item) => (
+                                   <Col key={item.id} xs={24} sm={12} lg={8}>
                                         <Card
                                              onClick={() =>
                                                   router.push("/branches")
@@ -77,6 +89,7 @@ export default function Home() {
                                              cover={
                                                   <img
                                                        src={item.pic}
+                                                       alt={item.name}
                                                        style={{
                                                             height: "220px",
                                                        }}
@@ -86,8 +99,7 @@ export default function Home() {
                                                   style={{
                                                        fontSize: "20px",
                                                        cursor: "pointer",
-                                                  }}
-                                                  key={idx}>
+                                                  }}>
                                                   {item.name}
                                              </h1>
                                         </Card>
