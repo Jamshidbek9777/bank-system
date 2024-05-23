@@ -108,7 +108,7 @@ export default function Home() {
                          </Row>
                     </Container>
                ) : (
-                    router.push("/login")
+                    <h1>Please login</h1>
                )}
           </>
      );
