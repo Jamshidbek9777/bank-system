@@ -34,22 +34,7 @@ const banks = [
      {
           id: 6,
           name: "Anor Bank",
-          pic: "/anor1.png",
-     },
-     {
-          id: 7,
-          name: "Anor Bank",
-          pic: "/anor1.png",
-     },
-     {
-          id: 8,
-          name: "Anor Bank",
-          pic: "/anor1.png",
-     },
-     {
-          id: 9,
-          name: "Anor Bank",
-          pic: "/anor1.png",
+          pic: "/ipoteka.jpeg",
      },
 ];
 
