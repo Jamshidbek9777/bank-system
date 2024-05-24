@@ -53,7 +53,7 @@ export const Header = () => {
                                    fontSize={25}
                               />
                          </StyledHam>
-                         <div><img src="/IMG_20240524_095832_673.png" width="20" height="20"/></div>
+                         <div><img src="/IMG_20240524_095832_673.png" width="40" height="40"/></div>
 
                          <MenuItems style={{ display: "flex", gap: "50px" }}>
                               <p
